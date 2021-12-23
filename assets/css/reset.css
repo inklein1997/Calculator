@@ -27,3 +27,10 @@ pre, code {
 ol, ul {
   list-style: none;
 }
+
+button {
+  background: none;
+  border:0;
+  font: 0;
+  padding: 0;
+}
