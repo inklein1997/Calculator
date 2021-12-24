@@ -5,7 +5,6 @@ body {
 #grid {
     width:100vw;
     height:100vh;
-    border: 1px black solid;
     display:grid;
     justify-content: center;
     /* align-content: center; */
