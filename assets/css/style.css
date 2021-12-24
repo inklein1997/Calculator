@@ -18,6 +18,15 @@ body {
     grid-column-end: 6;
     border:1px, black solid;
     background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding:6px;
+}
+
+#current {
+    font-size: 32px;
 }
 
 #equals {
