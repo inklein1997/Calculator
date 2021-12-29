@@ -20,6 +20,13 @@ function appendNumber(number) {
     operand = operand.toString() + number.toString();
 }
 
+function operationFunction(operation) {
+    operation = operation.toString();
+    operand = storedOperand;
+    operand = '';
+    console.log(operation)
+}
+
 function updateDisplay() {
     displayEl.textContent = operand
 }
@@ -30,5 +37,12 @@ numberButtonEl.forEach(button => {
     button.addEventListener('click', () => {
         appendNumber(button.innerText);
         updateDisplay();
+    })
+})
+
+operationButtonEl.forEach(button => {
+    button.addEventListener('click', () => {
+        operationFunction(button.innerText);
+       
     })
 })
