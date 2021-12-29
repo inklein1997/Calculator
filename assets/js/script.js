@@ -9,3 +9,26 @@ var displayEl = document.getElementById('display');
 var operand = '';
 var operation = '';
 var storedOperand ='';
+
+//Functions
+function appendNumber(number) {
+    if (operand.length == 9) {
+        return
+    } else if (number == '.' && operand.includes('.')) {
+        return
+    } 
+    operand = operand.toString() + number.toString();
+}
+
+function updateDisplay() {
+    displayEl.textContent = operand
+}
+
+
+//Event Listeners
+numberButtonEl.forEach(button => {
+    button.addEventListener('click', () => {
+        appendNumber(button.innerText);
+        updateDisplay();
+    })
+})
