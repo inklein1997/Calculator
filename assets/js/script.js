@@ -2,66 +2,65 @@ var numberButtonEl = document.querySelectorAll('[data-number]');
 var operationButtonEl = document.querySelectorAll('[data-operation]');
 var clearButtonEl = document.querySelector('[data-clear]');
 var equalsButtonEl = document.querySelector('[data-equals]');
-var percentButtonEl = document.querySelector('[data-percent]');
+var percentButtonEl = document.querySelector('[data-percentile]');
 var invertButtonEl = document.querySelector('[data-invert]');
 var displayEl = document.getElementById('display');
 
-var operand = '';
+var num1 = '';
 var operation = "";
-var storedOperand ='';
+var num2 ='';
 var result
 
 //Functions
 function appendNumber(number) {
-    if (operand.length == 9) {
+    if (num1.length == 9) {
         return
-    } else if (number == '.' && operand.includes('.')) {
+    } else if (number == '.' && num1.includes('.')) {
         return
     }
-    operand = operand.toString() + number.toString();
+    num1 = num1.toString() + number.toString();
 }
 
 function operationFunction(op) {
     if (result != "") {
         result = "";
-        storedOperand = operand;
+        num2 = num1;
     }
     operation = op.toString();
-    storedOperand = operand;
-    operand = "";
+    num2 = num1;
+    num1 = "";
 }
 
 function compute() {
-    console.log(typeof(Number(operand)))
-    console.log(operation)
-    console.log(operand)
-    console.log(storedOperand)
     
     if (operation == "+") {
-        result = Number(operand) + Number(storedOperand);
+        result = Number(num1) + Number(num2);
         console.log("adding!");
     } else if (operation == "-") {
-        result = Number(operand) - Number(storedOperand)
+        result = Number(num1) - Number(num2)
         console.log("subtracting!");
     } else if (operation == "x") {
-        result = Number(operand) * Number(storedOperand)
+        result = Number(num1) * Number(num2)
         console.log("multiplying!");
     } else if (operation == "÷") {
-        result = Number(operand) / Number(storedOperand)
+        result = Number(num1) / Number(num2)
         console.log("dividing!");
     }
-    operand = result
+
+    num2 = result
+    displayEl.textContent = num2
+
 }
 
 function clear() {
-    storedOperand = ""
-    operand = ""
+    num2 = ""
+    num1 = ""
     result = ""
     operation = ""
 }
 
 function updateDisplay() {
-    displayEl.textContent = operand
+    displayEl.textContent = num1
 }
 
 
@@ -86,7 +85,6 @@ operationButtonEl.forEach(button => {
 
 equalsButtonEl.addEventListener('click', () => {
     compute();
-    updateDisplay();
 })
 
 clearButtonEl.addEventListener('click', () => {
@@ -96,10 +94,19 @@ clearButtonEl.addEventListener('click', () => {
 
 invertButtonEl.addEventListener('click', () => {
     
-    if (operand.search("-") == -1) {
-        operand = "-" + operand;
-    } else if (operand.search("-") != -1){
-        operand = operand.replace("-","")
+    if (num1.search("-") == -1) {
+        num1 = "-" + num1;
+    } else if (num1.search("-") != -1){
+        num1 = num1.replace("-","")
     }
     updateDisplay();
 })
+
+percentButtonEl.addEventListener('click', () =>{
+    num1 = num1/100;
+    if (num1.length > 10) {
+        num1.toExponential();
+    }
+    updateDisplay();
+}
+)
