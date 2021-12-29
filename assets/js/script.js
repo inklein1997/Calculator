@@ -53,6 +53,13 @@ function compute() {
     operand = result
 }
 
+function clear() {
+    storedOperand = ""
+    operand = ""
+    result = ""
+    operation = ""
+}
+
 function updateDisplay() {
     displayEl.textContent = operand
 }
@@ -61,6 +68,9 @@ function updateDisplay() {
 //Event Listeners
 numberButtonEl.forEach(button => {
     button.addEventListener('click', () => {
+        if (result != "") {
+           clear();
+        }
         appendNumber(button.innerText);
         updateDisplay();
     })
@@ -80,9 +90,16 @@ equalsButtonEl.addEventListener('click', () => {
 })
 
 clearButtonEl.addEventListener('click', () => {
-    storedOperand="";
-    operand="";
-    result="";
-    operation="";
+    clear();
+    updateDisplay();
+})
+
+invertButtonEl.addEventListener('click', () => {
+    
+    if (operand.search("-") == -1) {
+        operand = "-" + operand;
+    } else if (operand.search("-") != -1){
+        operand = operand.replace("-","")
+    }
     updateDisplay();
 })
