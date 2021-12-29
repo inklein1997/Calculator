@@ -2,7 +2,7 @@ class Calculator {
     constructor(previousOperandElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement
         this.currentOperandTextElement = currentOperandTextElement
-        this.clear()
+        // this.clear()
     }
     clear() {
         this.currentOperand = ''
@@ -10,7 +10,7 @@ class Calculator {
         this.operation = undefined
     }
     delete() {
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
     }
     appendNumber(number) {
         if (number === '.' && this.currentOperand.includes('.')) return
@@ -50,9 +50,18 @@ class Calculator {
         this.operation = undefined
         this.previousOperand = '';
     }
+
+    getDisplayNumber(number) {
+        const floatNumber = parseFloat(number)
+        if(isNaN(floatNumber)) return ''
+        return floatNumber.toLocaleString('en')
+    }
+
     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand
-        this.previousOperandTextElement.innerText = this.previousOperand
+        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
+        if(this.operation != null) {
+            this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        }
     }
 }
 
@@ -83,7 +92,18 @@ operationButtonEl.forEach(button => {
     })
 })
 
-equalsButtonEl.addEventListener('click', () => {
+equalsButtonEl.addEventListener('click', function() {
     calculator.compute();
+    calculator.updateDisplay();
+    console.log("clicked!")
+})
+
+clearButtonEl.addEventListener('click', function() {
+    calculator.clear();
+    calculator.updateDisplay();
+})
+
+deleteButtonEl.addEventListener('click', function() {
+    calculator.delete();
     calculator.updateDisplay();
 })
