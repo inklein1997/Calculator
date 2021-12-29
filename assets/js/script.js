@@ -17,11 +17,15 @@ function appendNumber(number) {
         return
     } else if (number == '.' && operand.includes('.')) {
         return
-    } 
+    }
     operand = operand.toString() + number.toString();
 }
 
 function operationFunction(op) {
+    if (result != "") {
+        result = "";
+        storedOperand = operand;
+    }
     operation = op.toString();
     storedOperand = operand;
     operand = "";
@@ -72,5 +76,13 @@ operationButtonEl.forEach(button => {
 
 equalsButtonEl.addEventListener('click', () => {
     compute();
+    updateDisplay();
+})
+
+clearButtonEl.addEventListener('click', () => {
+    storedOperand="";
+    operand="";
+    result="";
+    operation="";
     updateDisplay();
 })
