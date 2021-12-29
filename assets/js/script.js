@@ -23,8 +23,7 @@ function appendNumber(number) {
 
 function operationFunction(op) {
     if (result != "") {
-        result = "";
-        num2 = num1;
+        result = num2;
     }
     operation = op.toString();
     num2 = num1;
@@ -35,19 +34,21 @@ function compute() {
     
     if (operation == "+") {
         result = Number(num1) + Number(num2);
-        console.log("adding!");
     } else if (operation == "-") {
         result = Number(num1) - Number(num2)
-        console.log("subtracting!");
     } else if (operation == "x") {
         result = Number(num1) * Number(num2)
-        console.log("multiplying!");
     } else if (operation == "÷") {
-        result = Number(num1) / Number(num2)
-        console.log("dividing!");
+        result = Number(num2) / Number(num1)
     }
 
     num2 = result
+
+    console.log(typeof(num2))
+    console.log(num2.toString().length > 9)
+    if (num2.toString().length > 9) {
+        num2 = num2.toExponential();
+    }
     displayEl.textContent = num2
 
 }
@@ -60,6 +61,10 @@ function clear() {
 }
 
 function updateDisplay() {
+    console.log(typeof(num1))
+    if (num1.length > 9) {
+        num1 = Number(num1).toExponential();
+    }
     displayEl.textContent = num1
 }
 
@@ -110,3 +115,10 @@ percentButtonEl.addEventListener('click', () =>{
     updateDisplay();
 }
 )
+
+
+// num1 is inputted first
+//num2 is inputted second
+
+//when equaled, num2 is added to result
+//if result exists, num1 is added to it.
