@@ -23,11 +23,15 @@ function appendNumber(number) {
 
 function operationFunction(op) {
     if (result != "") {
-        result = num2;
+        num2 = result.toString();
+        console.log("stored value is "+ num2);
+        num1 = "";
+        result = "";
+    } else {
+        num2 = num1;
+        num1 = "";
     }
     operation = op.toString();
-    num2 = num1;
-    num1 = "";
 }
 
 function compute() {
@@ -44,8 +48,6 @@ function compute() {
 
     num2 = result
 
-    console.log(typeof(num2))
-    console.log(num2.toString().length > 9)
     if (num2.toString().length > 9) {
         num2 = num2.toExponential();
     }
@@ -61,7 +63,6 @@ function clear() {
 }
 
 function updateDisplay() {
-    console.log(typeof(num1))
     if (num1.length > 9) {
         num1 = Number(num1).toExponential();
     }
