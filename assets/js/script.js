@@ -39,7 +39,7 @@ function compute() {
     if (operation == "+") {
         result = Number(num1) + Number(num2);
     } else if (operation == "-") {
-        result = Number(num1) - Number(num2)
+        result = Number(num2) - Number(num1)
     } else if (operation == "x") {
         result = Number(num1) * Number(num2)
     } else if (operation == "÷") {
