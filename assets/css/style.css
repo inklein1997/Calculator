@@ -86,11 +86,5 @@ button {
 @media screen and (max-width: 1000px) {
     main {
         gap:3.0vw;
-    };
-    button {
-        font-size: 2.5em;
-    }
-    display {
-        font-size: 8em;;
     }
 }
