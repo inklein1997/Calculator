@@ -41,7 +41,7 @@ The creator's intentions for this project include:
 This project is licensed under the terms of [MIT](https://opensource.org/licenses/MIT).
   
 ## Contribution
-Before contributing to **Stopwatch iPhone Clone**, please read this [code of conduct](code_of_conduct.md)[^1].<br>
+Before contributing to **iPhone Calculator Clone**, please read this [code of conduct](code_of_conduct.md)[^1].<br>
 Here's how you can contribute...
 1. Add issue or recommendation for improvement to Issues tab on Github.
 2. Submit pull request for review.
